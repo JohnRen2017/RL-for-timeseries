@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 class Environ:
     def __init__(self, data=None, max_iteration=None, lookback=3):
@@ -79,7 +80,7 @@ class Environ:
         plt.show()
 
     def render(self):
-        
+        pass
 
 if __name__ == "__main__":
     # POINTS = 1000
