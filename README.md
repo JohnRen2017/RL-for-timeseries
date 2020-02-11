@@ -1,1 +1,1 @@
-强化学习用于时间序列的预测，环境由自己构建。
+# Environment for sequence generation and render
