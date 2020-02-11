@@ -11,8 +11,25 @@ def animate(i):
 
     for j in range(true.shape[1]):
         axes[j].cla()
-        axes[j].plot(list(range(true.shape[0])), true[:, j])
-        axes[j].plot(list(range(pred.shape[0])), pred[:, j])
+        if j == 0:
+            axes[j].set_title("Comparison between true and predict values")
+        axes[j].plot(
+            list(range(true.shape[0])),
+            true[:, j],
+            color="r",
+            label="true value_{}".format(j + 1),
+        )
+        axes[j].scatter(
+            list(range(pred.shape[0])),
+            pred[:, j],
+            color="b",
+            s=np.abs(true[:, j] - pred[:, j]) * 10,
+            marker="D",
+            label="pred value_{}".format(j + 1),
+        )
+        axes[j].set_ylabel("KPI-{}".format(j + 1))
+        axes[j].legend(loc="center left")
+    axes[j].set_xlabel("time")
 
 
 def getcontent(path):
@@ -24,7 +41,7 @@ def getcontent(path):
 
 if __name__ == "__main__":
     FPATH = r"C:\PythonCode\myRL\RL4TimeSeries"
-    figure, axes = plt.subplots(nrows=3, ncols=1, sharex=True, figsize=(8, 12))
+    figure, axes = plt.subplots(nrows=3, ncols=1, sharex=True, figsize=(6, 8))
     ani = FuncAnimation(figure, animate, interval=1000)
-    plt.tight_layout()
+    plt.tight_layout(pad=1.6)
     plt.show()
